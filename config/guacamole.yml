@@ -1,0 +1,15 @@
+development:
+  protocol: 'http'
+  host: 'localhost'
+  port: 8529
+  password: ''
+  username: ''
+  database: 'github_recommender_development'
+
+test:
+  protocol: 'http'
+  host: 'localhost'
+  port: 8529
+  password: ''
+  username: ''
+  database: 'github_recommender_test'
