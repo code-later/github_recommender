@@ -2,7 +2,7 @@ class RecommendationsController < ApplicationController
   before_filter :load_user
 
   def index
-    @recommendations = Recommendation.recommend_repos_for(@user)
+    @recommendations = Recommendation.recommendations_for(@user)
   end
 
   private

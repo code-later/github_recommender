@@ -7,12 +7,11 @@ class UsersController < ApplicationController
     @user = User.new params[:user]
 
     if @user.valid?
-      UsersCollection.save @user
+      UsersCollection.create_or_update @user
 
-      redirect_to user_recommendations(@user)
+      redirect_to user_recommendations_url(@user)
     else
       render :new
     end
-    
   end
 end

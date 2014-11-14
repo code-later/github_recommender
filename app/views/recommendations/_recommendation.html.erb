@@ -1,14 +1,13 @@
 <div class="row">
   <div>
-
     <div class="row">
       <div class="small-1 columns">
-        1
+        <%= recommendation.rank %>
       </div>
       <div class="small-9 columns">
-        <%= link_to "repo/repo", "http://github.com/repo/repo" %>
+        <%= link_to recommendation.repo.full_name, recommendation.repo.url %>
+        <%= recommendation.repo.key %>
       </div>
     </div>
-
   </div>
 </div>
