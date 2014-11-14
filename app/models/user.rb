@@ -14,7 +14,7 @@ class User
 
   callbacks :user_callbacks
 
-  def github_user
-    @github_user ||= Octokit.user username
+  def github_importer
+    @github_importer ||= GithubImporter.new self
   end
 end

@@ -19,13 +19,5 @@ class UsersCollection
         save(new_user)
       end
     end
-
-    def create_or_update(user, first = true)
-      if first
-        user.github_user.rels[:following].get.data.each do |u|
-          create_or_update(User.new(username: u.login), false)
-        end
-      end
-    end
   end
 end
