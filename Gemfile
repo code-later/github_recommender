@@ -26,7 +26,7 @@ group :development do
   gem 'pry-rails'
 end
 
-gem 'guacamole', github: 'triAGENS/guacamole', branch: 'implement-gharial-support'
+gem 'guacamole', git: 'https://github.com/triAGENS/guacamole.git', branch: 'implement-gharial-support'
 gem 'octokit'
 
 # Use ActiveModel has_secure_password

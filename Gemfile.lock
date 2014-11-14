@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/triAGENS/guacamole.git
+  remote: https://github.com/triAGENS/guacamole.git
   revision: 4f534a941cbe1946aaf462add2c78d958d6a575d
   branch: implement-gharial-support
   specs:
