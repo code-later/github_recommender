@@ -24,10 +24,12 @@ group :development do
   gem 'binding_of_caller'
   gem 'spring'
   gem 'pry-rails'
+  gem 'dotenv-rails'
 end
 
 gem 'guacamole', git: 'https://github.com/triAGENS/guacamole.git', branch: 'implement-gharial-support'
 gem 'octokit'
+gem 'omniauth-github'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
