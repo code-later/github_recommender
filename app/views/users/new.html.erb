@@ -12,7 +12,4 @@
   still do.
 </p>
 
-<%= simple_form_for @user do |f| %>
-  <%= f.input :username, required: true %>
-  <%= f.button :submit %>
-<% end %>
+<%= link_to 'Sign in with GitHub', '/auth/github', class: 'button' %>

@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :recommendations
   end
+
+  get '/auth/:provider/callback', to: 'sessions#create'
 end

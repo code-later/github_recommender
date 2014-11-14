@@ -1,12 +1,7 @@
 class UserCallbacks
   include Guacamole::Callbacks
 
-  before_create :set_avatar_url
-  after_create :load_repos_from_github
-
-  def set_avatar_url
-    object.avatar_url = object.github_user.avatar_url
-  end
+  # after_create :load_repos_from_github
 
   def load_repos_from_github
     object.repositories = object.github_user.rels[:repos].get.data.map do |repo| 
