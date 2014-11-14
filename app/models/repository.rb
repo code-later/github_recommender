@@ -1,8 +1,7 @@
 class Repository
   include Guacamole::Model
 
-  attribute :owner, User
-  attribute :users, Array[User]
+  # attribute :users, Array[User]
 
   attribute :name, String
   attribute :full_name, String
