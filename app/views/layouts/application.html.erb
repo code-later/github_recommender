@@ -23,10 +23,13 @@
       <% if current_user.present? %>
       <section class="top-bar-section">
         <ul class="right">
-          <li>
+          <li class="has-dropdown">
             <%= link_to '#' do %>
-            <%= image_tag current_user.avatar_url, class: 'nav--avatar' %><span class="nav--display_name"><%= current_user.display_name %></span>
+            <%= image_tag current_user.avatar_url, class: 'nav--avatar' %><span class="nav--login"><%= current_user.login %></span>
             <% end %>
+            <ul class="dropdown">
+              <li><%= link_to 'Logout', sessions_url, method: 'delete' %></li> 
+            </ul>
           </li>
         </ul>
       </section>

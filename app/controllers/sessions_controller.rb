@@ -10,6 +10,12 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    reset_session
+
+    redirect_to root_path, notice: 'Logged out'
+  end
+
   private
 
   def auth_hash

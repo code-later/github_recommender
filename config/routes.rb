@@ -5,5 +5,7 @@ Rails.application.routes.draw do
     resources :recommendations
   end
 
+  resource :sessions, only: [:create, :destroy]
+
   get '/auth/:provider/callback', to: 'sessions#create'
 end
