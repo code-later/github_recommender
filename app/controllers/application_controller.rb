@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user=(user)
-    session[:current_user_key] = user.key
+    session[:current_user_key] = user.key if user
     @_current_user = user
   end
   helper_method :current_user

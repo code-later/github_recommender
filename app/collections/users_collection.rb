@@ -3,18 +3,25 @@ class UsersCollection
   
   map do
     attribute :repositories, via: Like
+    # attribute :followings, via: Followship
   end
 
   class << self
-    def find_or_create_by(omniauth_hash)
+    def update_user(attributes)
+      user = find_or_create_by_attributes(attributes)
+
+      user.attributes = user.attributes.merge(attributes)
+
+      save(user)
+    end
+
+    def find_or_create_by_attributes(attributes)
       begin
-        by_aql("FILTER display_name == @display_name", display_name: omniauth_hash["info"]["nickname"]).first
+        by_aql("FILTER login == @login", login: attributes[:login]).first
       rescue Ashikawa::Core::ResourceNotFound
-        new_user = User.new(github_uid: omniauth_hash["uid"],
-                            github_token: omniauth_hash["credentials"]["token"],
-                            display_name: omniauth_hash["info"]["nickname"],
-                            name: omniauth_hash["info"]["name"],
-                            avatar_url: omniauth_hash["info"]["image"])
+        new_user = User.new(github_uid: attributes[:id],
+                            login:      attributes[:login],
+                            avatar_url: attributes[:avatar_url])
 
         save(new_user)
       end
