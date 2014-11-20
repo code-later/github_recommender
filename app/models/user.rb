@@ -1,6 +1,8 @@
 class User
   include Guacamole::Model
 
+  TWO_WEEKS = 2
+
   attribute :github_uid, String
   attribute :github_token, String
   attribute :name, String
@@ -17,5 +19,9 @@ class User
 
   def github_importer
     @github_importer ||= GithubImporter.new self
+  end
+
+  def fresh?
+    Time.now.weeks_ago(TWO_WEEKS) < self.updated_at
   end
 end
