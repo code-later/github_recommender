@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  root 'users#new'
+  root 'recommendations#index'
 
-  resources :users do
-    resources :recommendations
-  end
+  resources :users, only: [:new]
+  resources :recommendations, only: [:index]
 
   resource :sessions, only: [:create, :destroy]
 

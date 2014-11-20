@@ -14,4 +14,12 @@ class ApplicationController < ActionController::Base
     @_current_user = user
   end
   helper_method :current_user
+
+  private
+
+  def require_login
+    unless current_user
+      redirect_to new_user_path
+    end
+  end
 end
