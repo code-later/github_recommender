@@ -16,15 +16,14 @@ class UsersCollection
     end
 
     def find_or_create_by_attributes(attributes)
-      begin
-        by_aql("FILTER login == @login", login: attributes[:login]).first
-      rescue Ashikawa::Core::ResourceNotFound
-        new_user = User.new(github_uid: attributes[:id],
-                            login:      attributes[:login],
-                            avatar_url: attributes[:avatar_url])
+      user = by_aql("FILTER user.login == @login", login: attributes[:login]).first
+      return user if user.present?
 
-        save(new_user)
-      end
+      new_user = User.new(github_uid: attributes[:id],
+                          login:      attributes[:login],
+                          avatar_url: attributes[:avatar_url])
+
+      save(new_user)
     end
   end
 end

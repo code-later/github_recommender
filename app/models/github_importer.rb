@@ -17,14 +17,7 @@ class GithubImporter
 
   def import_repositories(user = @user)
     user.repositories = client.repos(user.login).map do |repo|
-      Repository.new(name: repo.name,
-                     full_name: repo.full_name,
-                     url: repo.url,
-                     created: repo.created_at,
-                     language: repo.language,
-                     watchers: repo.watchers,
-                     stargazers: repo.stargazers_count,
-                     forks: repo.forks)
+      RepositoriesCollection.find_or_initialize_by_attributes(repo)
     end
     UsersCollection.save user
   end
