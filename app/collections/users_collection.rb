@@ -12,7 +12,7 @@ class UsersCollection
 
       user.attributes = user.attributes.merge(attributes)
 
-      save(user)
+      save(user) unless user.fresh?
     end
 
     def find_or_create_by_attributes(attributes)

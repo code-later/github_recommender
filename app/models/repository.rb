@@ -11,4 +11,5 @@ class Repository
   attribute :watchers, Fixnum
   attribute :stargazers, Fixnum
   attribute :forks, Fixnum
+  attribute :rank, Fixnum
 end
