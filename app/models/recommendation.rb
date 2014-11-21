@@ -2,6 +2,7 @@ class Recommendation
   include ActiveModel::Conversion
 
   MIN_RANK           = 110
+  DEFAULT_LANGUAGE   = 'Ruby'
   RECOMMENDATION_AQL = <<-AQL.strip_heredoc
     FOR n IN GRAPH_NEIGHBORS(@graph,
                             { _key:@vertex },
@@ -26,7 +27,7 @@ class Recommendation
 
     def query_for_recommendations(user, language)
       RepositoriesCollection.by_aql(RECOMMENDATION_AQL,
-                                    { vertex: user.key, min_rank: MIN_RANK, language: language, graph: Guacamole.configuration.graph.name },
+                                    { vertex: user.key, min_rank: MIN_RANK, language: language || DEFAULT_LANGUAGE, graph: Guacamole.configuration.graph.name },
                                     { return_as: nil, for_in: nil })
     end
   end

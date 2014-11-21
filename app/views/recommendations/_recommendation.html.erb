@@ -1,13 +1,9 @@
-<div class="row">
-  <div>
-    <div class="row">
-      <div class="small-1 columns">
-        <%= recommendation.rank %>
-      </div>
-      <div class="small-9 columns">
-        <%= link_to recommendation.repo.full_name, recommendation.repo.url %>
-        <%= recommendation.repo.key %>
-      </div>
-    </div>
-  </div>
-</div>
+<tr>
+  <td><%= recommendation.rank %></td>
+  <td><%= link_to recommendation.repo.full_name, recommendation.repo.url %></td>
+  <td>
+    <%= octicon(:eye) %>&nbsp;<%= recommendation.repo.watchers %>
+    <%= octicon(:star) %>&nbsp;<%= recommendation.repo.stargazers %>
+    <%= octicon(:repo_forked) %>&nbsp;<%= recommendation.repo.forks %>
+  </td>
+</tr>

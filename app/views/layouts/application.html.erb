@@ -36,23 +36,25 @@
       <% end %>
     </nav>
 
-    <div class="row layout--content">
-      <div class="small-8 small-centered columns">
-        <% if flash.present? %>
+    <section class="main">
+      <div class="row layout--content">
+        <div class="small-12 small-centered columns">
+          <% if flash.present? %>
           <% flash.each do |flash_type, flash_message| %>
-            <div data-alert class="alert-box <%= flash_type %>">
-              <%= flash_message %>
-              <a href="#" class="close">&times;</a>
-            </div>
+          <div data-alert class="alert-box <%= flash_type %>">
+            <%= flash_message %>
+            <a href="#" class="close">&times;</a>
+          </div>
           <% end %>
-        <% end %>
-        <%= yield %>
+          <% end %>
+          <%= yield %>
+        </div>
       </div>
-    </div>
+    </section>
 
     <div class="layout--footer">
       <div class="row">
-        <div class="small-8 small-centered columns layout--footer-content">
+        <div class="small-12 small-centered columns layout--footer-content">
           <ul class="layout--footer-list">
             <li class="layout--footer-list-item">Copyright &copy; <%= Date.today.year %> by <%= link_to "ArangoDB", "http://arangodb.org" %></li>
             <li class="layout--footer-list-item">Source on <%= link_to "GitHub", "http://github.com" %></li>
