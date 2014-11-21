@@ -3,7 +3,7 @@ class UsersCollection
   
   map do
     attribute :repositories, via: Like
-    # attribute :followings, via: Followship
+    attribute :followings, via: Followship
   end
 
   class << self

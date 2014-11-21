@@ -11,10 +11,13 @@ class GithubImporter
   def import_followings(use_cached = true)
     return true if use_cached
 
-    client.following.each do |following|
+    followings = client.following.map do |following|
       u = UsersCollection.find_or_create_by_attributes(following)
       import_repositories(u, u.fresh?)
+      u
     end
+
+    @user.followings = followings
 
     import_repositories(@user, @user.fresh?)
   end

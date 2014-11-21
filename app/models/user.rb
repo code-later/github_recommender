@@ -9,7 +9,7 @@ class User
   attribute :login, String
   attribute :avatar_url, String
   attribute :repositories, Array[Repository]
-  # attribute :followings, Array[User]
+  attribute :followings, Array[User], coerce: false
 
   validate :login, presence: true
   validate :github_uid, presence: true
