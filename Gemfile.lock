@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/triAGENS/guacamole.git
-  revision: 4f534a941cbe1946aaf462add2c78d958d6a575d
+  revision: 404c83d2f57245cd0666c1b6aab16b990ebb98af
   branch: implement-gharial-support
   specs:
     guacamole (0.3.0)
