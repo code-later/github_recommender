@@ -8,7 +8,7 @@ class User
   attribute :name, String
   attribute :login, String
   attribute :avatar_url, String
-  attribute :repositories, Array[Repository]
+  attribute :repositories, Array[Repository], coerce: false
   attribute :followings, Array[User], coerce: false
 
   validate :login, presence: true

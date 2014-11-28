@@ -1,9 +1,9 @@
 class RepositoriesCollection
   include Guacamole::Collection
 
-  # map do
-  #   attribute :users, via: Like
-  # end
+  map do
+    attribute :users, via: Like, inverse: true
+  end
 
   class << self
     def find_or_initialize_by_attributes(attributes)
