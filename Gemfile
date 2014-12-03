@@ -36,6 +36,9 @@ gem 'omniauth-github'
 
 # Use unicorn as the app server
 gem 'puma'
+gem 'invoker'
+gem 'sidekiq'
+gem 'sidekiq-status'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

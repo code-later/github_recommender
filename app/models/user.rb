@@ -3,6 +3,8 @@ class User
 
   ONE_WEEK = 1
 
+  attr_accessor :current_import_job
+
   attribute :github_uid, String
   attribute :github_token, String
   attribute :name, String
@@ -16,10 +18,6 @@ class User
   validate :github_uid, presence: true
 
   callbacks :user_callbacks
-
-  def github_importer
-    @github_importer ||= GithubImporter.new self
-  end
 
   def fresh?
     updated_at.present? && updated_at < Time.now.weeks_ago(ONE_WEEK)
