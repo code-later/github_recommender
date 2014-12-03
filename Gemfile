@@ -39,6 +39,7 @@ gem 'puma'
 gem 'invoker'
 gem 'sidekiq'
 gem 'sidekiq-status'
+gem 'sinatra', '>= 1.3.0', :require => nil
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
