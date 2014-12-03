@@ -1,19 +1,19 @@
 class User
   include Guacamole::Model
 
-  TWO_WEEKS = 2
+  ONE_WEEK = 1
 
   attribute :github_uid, String
   attribute :github_token, String
   attribute :name, String
   attribute :login, String
   attribute :avatar_url, String
+  attribute :last_import, DateTime
   attribute :repositories, Array[Repository], coerce: false
   attribute :followings, Array[User], coerce: false
 
   validate :login, presence: true
   validate :github_uid, presence: true
-  validate :github_token, presence: true
 
   callbacks :user_callbacks
 
@@ -22,6 +22,14 @@ class User
   end
 
   def fresh?
-    Time.now.weeks_ago(TWO_WEEKS) < self.updated_at
+    updated_at.present? && updated_at < Time.now.weeks_ago(ONE_WEEK)
+  end
+
+  def needs_reimport?
+    last_import.nil? || last_import_more_then_7_day_ago?
+  end
+
+  def last_import_more_then_7_day_ago?
+    last_import.present? && last_import < Time.now.weeks_ago(ONE_WEEK)
   end
 end

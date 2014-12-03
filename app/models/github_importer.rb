@@ -8,23 +8,21 @@ class GithubImporter
                                   auto_paginate: true)
   end
 
-  def import_followings(use_cached = true)
-    return true if use_cached
-
+  def import_followings
     followings = client.following.map do |following|
       u = UsersCollection.find_or_create_by_attributes(following)
-      import_repositories(u, u.fresh?)
+      u.last_import = Time.now
+      import_repositories(u)
       u
     end
 
     @user.followings = followings
+    @user.last_import = Time.now
 
-    import_repositories(@user, @user.fresh?)
+    import_repositories(@user)
   end
 
-  def import_repositories(user = @user, use_cached = true)
-    return true if use_cached
-
+  def import_repositories(user = @user)
     user.repositories = client.repos(user.login).map do |repo|
       RepositoriesCollection.find_or_initialize_by_attributes(repo)
     end
