@@ -1,0 +1,14 @@
+<div class="row wait-for-import">
+  <div class="small-6 small-centered columns">
+    <div class="spinner">
+      <span class="mega-octicon octicon-sync"></span>
+    </div>
+    <h4 class="subheader">Retrieving data from Github and recommending all the things&hellip;</h4>
+  </div>
+
+  <div class="job-status" data-job-id="<%= @job_id %>">
+    <% if Rails.env.development? %>
+    <p>Job ID: <%= @job_id %></p>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+// Place all the styles related to the import_jobs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wait-for-import {
+    h4 {
+        text-align: center;
+    }
+
+    .spinner {
+        margin:auto;
+        width: 96px;
+        margin-bottom: 20px;
+        position:relative;
+
+        -webkit-animation: rotation 2s infinite linear;
+        -moz-animation: rotation 2s infinite linear;
+        -o-animation: rotation 2s infinite linear;
+        animation: rotation 2s infinite linear;
+
+        .octicon-sync {
+            font-size: 128px;
+        }
+    }
+}
+
+@-webkit-keyframes rotation {
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(359deg);}
+}
+
+@-moz-keyframes rotation {
+    from {-moz-transform: rotate(0deg);}
+    to {-moz-transform: rotate(359deg);}
+}
+
+@-o-keyframes rotation {
+    from {-o-transform: rotate(0deg);}
+    to {-o-transform: rotate(359deg);}
+}
+
+@keyframes rotation {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(359deg);}
+}

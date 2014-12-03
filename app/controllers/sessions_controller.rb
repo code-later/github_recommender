@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     if user = UsersCollection.update_user(auth_hash)
       self.current_user = user
 
-      redirect_to root_path, notice: 'You have successfully signed in!'
+      redirect_to import_job_path(user.current_import_job)
     else
       redirect_to root_path, notice: 'Something went wrong'
     end

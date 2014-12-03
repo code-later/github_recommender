@@ -15,7 +15,7 @@
 //= require foundation
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function() {$(document).foundation();});
 
 $(window).bind("load", function () {
   var footer = $(".layout--footer");
@@ -28,4 +28,16 @@ $(window).bind("load", function () {
       'margin-top': height + 'px'
     });
   }
+});
+
+$(document).ready(function() {
+    if ($(".job-status").length > 0) {
+        setInterval(function() {
+            $.getJSON("/import_jobs/" + $(".job-status").data("job-id") + "/job_status", function(data) {
+                if (data.status == 'ready') {
+                    window.location = data.url;
+                }
+            });
+        }, 1000);
+    }
 });

@@ -6,5 +6,11 @@ Rails.application.routes.draw do
 
   resource :sessions, only: [:create, :destroy]
 
+  resources :import_jobs, only: [:show] do
+    member do
+      get :job_status
+    end
+  end
+
   get '/auth/:provider/callback', to: 'sessions#create'
 end
