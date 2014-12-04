@@ -20,7 +20,7 @@ class User
   callbacks :user_callbacks
 
   def fresh?
-    updated_at.present? && updated_at < Time.now.weeks_ago(ONE_WEEK)
+    updated_at.present? && updated_at > Time.now.weeks_ago(ONE_WEEK)
   end
 
   def needs_reimport?
