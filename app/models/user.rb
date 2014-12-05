@@ -30,4 +30,17 @@ class User
   def last_import_more_then_7_day_ago?
     last_import.present? && last_import < Time.now.weeks_ago(ONE_WEEK)
   end
+
+  def first_signup?
+    @old_attributes.present? && @old_attributes[:github_token].nil? && self.github_token.present?
+  end
+
+  def attributes=(attributes)
+    @old_attributes = self.attributes
+    super
+  end
+
+  def changed_attributes?
+    @old_attributes != self.attributes
+  end
 end

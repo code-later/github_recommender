@@ -12,7 +12,9 @@ class UsersCollection
 
       user.attributes = user.attributes.merge(attributes)
 
-      save(user) unless user.fresh?
+      if user.changed_attributes?
+        save(user)
+      end
 
       user
     end
