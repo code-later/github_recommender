@@ -2,7 +2,7 @@ class RepositoriesCollection
   include Guacamole::Collection
 
   map do
-    attribute :users, via: Like, inverse: true
+    attribute :user, via: Like, inverse: true
   end
 
   class << self

@@ -1,7 +1,7 @@
 class Repository
   include Guacamole::Model
 
-  attribute :users, Array[User], coerce: false
+  attribute :user, User, coerce: false
 
   attribute :name, String
   attribute :full_name, String
