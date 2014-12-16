@@ -70,6 +70,8 @@ Rails.application.configure do
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 
+  OmniAuth.config.full_host = "http://gh-recommender.gigantic.io"
+
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 end

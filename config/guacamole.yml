@@ -13,3 +13,11 @@ test:
   password: ''
   username: ''
   database: 'github_recommender_test'
+
+production:
+  protocol: 'http'
+  host: '<%= ENV['ARANGODB_PORT_8529_TCP_ADDR'] %>'
+  port: '<%= ENV['ARANGODB_PORT_8529_TCP_PORT'] %>'
+  password: ''
+  username: ''
+  database: '_system'

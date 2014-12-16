@@ -15,11 +15,11 @@ gem 'therubyracer',  platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-gem 'foundation-rails'
 gem 'simple_form'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do
+  gem 'foundation-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'spring'
