@@ -16,3 +16,12 @@
 /tmp
 
 .env
+
+# Docker
+cache
+public/assets
+
+# Giant Swarm
+swarmvars.json
+
+*.log
