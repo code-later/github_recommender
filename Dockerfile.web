@@ -1,0 +1,6 @@
+FROM nginx
+MAINTAINER Dirk Breuer <mail@breuer.io>
+
+RUN rm -rf /usr/share/nginx/html
+COPY public /usr/share/nginx/html
+COPY config/deploy/nginx.conf /etc/nginx/conf.d/default.conf
