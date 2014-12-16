@@ -1,0 +1,58 @@
+{
+    "app_name": "github_recommender",
+    "services": [
+        {
+            "service_name": "gh-recommender",
+            "components": [
+                {
+                    "component_name": "nginx",
+                    "image": "registry.giantswarm.io/yoshida/gh-recommender-web",
+                    "ports": [ "80/tcp" ],
+                    "dependencies": [
+                        { "name": "rails-app", "port": 8080 }
+                    ],
+                    "domains": { "gh-recommender.gigantic.io": "80" }
+                },
+                {
+                    "component_name": "rails-app",
+                    "image": "registry.giantswarm.io/yoshida/gh-recommender-app",
+                    "ports": [ "8080/tcp" ],
+                    "env": [
+                        "RAILS_ENV=production",
+                        "SECRET_KEY_BASE=$secret_key_base",
+                        "REDIS_URL=redis://redis:6379",
+                        "GITHUB_KEY=$github_key",
+                        "GITHUB_SECRET=$github_secret"
+                    ],
+                    "dependencies": [
+                        { "name": "arangodb", "port": 8529 },
+                        { "name": "redis", "port": 6379 }
+                    ]
+                },
+                {
+                    "component_name": "sidekiq-worker",
+                    "image": "registry.giantswarm.io/yoshida/gh-recommender-worker",
+                    "env": [
+                        "RAILS_ENV=production",
+                        "SECRET_KEY_BASE=$secret_key_base",
+                        "REDIS_URL=redis://redis:6379"
+                    ],
+                    "dependencies": [
+                        { "name": "arangodb", "port": 8529 },
+                        { "name": "redis", "port": 6379 }
+                    ]
+                },
+                {
+                    "component_name": "arangodb",
+                    "image": "arangodb/arangodb",
+                    "ports": [ "8529/tcp" ]
+                },
+                {
+                    "component_name": "redis",
+                    "image": "redis",
+                    "ports": [ "6379/tcp" ]
+                }
+            ]
+        }
+    ]
+}
