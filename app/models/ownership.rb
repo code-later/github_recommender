@@ -1,4 +1,4 @@
-class Like
+class Ownership
   include Guacamole::Edge
 
   from :users
