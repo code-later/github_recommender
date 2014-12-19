@@ -2,7 +2,7 @@ class UsersCollection
   include Guacamole::Collection
 
   map do
-    attribute :repositories, via: Like
+    attribute :repositories, via: Ownership
     attribute :followings, via: Followship
   end
 
